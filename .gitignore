@@ -42,7 +42,6 @@ local.properties
 .classpath
 
 /*.crc
-/*.txt
 /*.csv
 out/
 datagen_output/
