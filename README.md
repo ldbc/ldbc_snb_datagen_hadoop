@@ -1,29 +1,27 @@
 ![LDBC_LOGO](https://raw.githubusercontent.com/wiki/ldbc/ldbc_snb_datagen/images/ldbc-logo.png)
 
-# LDBC SNB Data Generator (Datagen)
+# LDBC SNB Datagen (Hadoop-based)
 
-| branch    | build status |
-| --------- | ------------ |
-| `dev`     | [![Build Status](https://circleci.com/gh/ldbc/ldbc_snb_datagen.svg?style=svg)](https://circleci.com/gh/ldbc/ldbc_snb_datagen) |
-| `stable`  | [![Build Status](https://circleci.com/gh/ldbc/ldbc_snb_datagen/tree/stable.svg?style=svg)](https://circleci.com/gh/ldbc/ldbc_snb_datagen?branch=stable) |
+[![Build Status](https://circleci.com/gh/ldbc/ldbc_snb_datagen_hadoop.svg?style=svg)](https://circleci.com/gh/ldbc/ldbc_snb_datagen_hadoop)
+
+Datagen is part of the [LDBC project](http://www.ldbcouncil.org/).
 
 :scroll: If you wish to cite the LDBC SNB, please refer to the [documentation repository](https://github.com/ldbc/ldbc_snb_docs#how-to-cite-ldbc-benchmarks).
 
-:warning: There are two different versions of the Datagen, both stored in this repository:
+:warning: There are two different versions of the Datagen:
 
-* To generate the Interactive SF1-1000 data sets, use the non-default [`stable` branch](https://github.com/ldbc/ldbc_snb_datagen/tree/stable) which runs on Hadoop.
-* For the Interactive workload's larger data sets (up to SF30k) and for the BI workload, use the [`dev` branch](https://github.com/ldbc/ldbc_snb_datagen/) which runs on Spark. This is an experimental implementation.
+* The Hadoop-based variant (stored in this repository) generates the Interactive SF1-1000 data sets
+* For the Interactive workload's larger data sets (up to SF30k) and for the BI workload, use the [Spark-based Datagen](https://github.com/ldbc/ldbc_snb_datagen/).
 
 The LDBC SNB Data Generator (Datagen) is the responsible for providing the datasets used by all the LDBC benchmarks. This data generator is designed to produce directed labelled graphs that mimic the characteristics of those graphs of real data. A detailed description of the schema produced by Datagen, as well as the format of the output files, can be found in the latest version of official [LDBC SNB specification document](https://github.com/ldbc/ldbc_snb_docs).
 
-`ldbc_snb_datagen` is part of the [LDBC project](http://www.ldbcouncil.org/).
 
-* **[Releases](https://github.com/ldbc/ldbc_snb_datagen/releases)**
-* **[Configuration](https://github.com/ldbc/ldbc_snb_datagen/wiki/Configuration)**
-* **[Compilation and Execution](https://github.com/ldbc/ldbc_snb_datagen/wiki/Compilation_Execution)**
-* **[Advanced Configuration](https://github.com/ldbc/ldbc_snb_datagen/wiki/Advanced_Configuration)**
-* **[Output](https://github.com/ldbc/ldbc_snb_datagen/wiki/Data-Output)**
-* **[Troubleshooting](https://github.com/ldbc/ldbc_snb_datagen/wiki/Troubleshooting)**
+* **[Releases](https://github.com/ldbc/ldbc_snb_datagen_hadoop/releases)**
+* **[Configuration](https://github.com/ldbc/ldbc_snb_datagen_hadoop/wiki/Configuration)**
+* **[Compilation and Execution](https://github.com/ldbc/ldbc_snb_datagen_hadoop/wiki/Compilation_Execution)**
+* **[Advanced Configuration](https://github.com/ldbc/ldbc_snb_datagen_hadoop/wiki/Advanced_Configuration)**
+* **[Output](https://github.com/ldbc/ldbc_snb_datagen_hadoop/wiki/Data-Output)**
+* **[Troubleshooting](https://github.com/ldbc/ldbc_snb_datagen_hadoop/wiki/Troubleshooting)**
 
 ## Quick start
 
