@@ -55,8 +55,6 @@ tar xf hadoop-3.2.1.tar.gz
 export HADOOP_CLIENT_OPTS="-Xmx2G"
 # set this to the Hadoop 3.2.1 directory
 export HADOOP_HOME=`pwd`/hadoop-3.2.1
-# set this to the repository's directory
-export LDBC_SNB_DATAGEN_HOME=`pwd`
 ./run.sh
 ```
 
