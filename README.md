@@ -4,7 +4,7 @@
 
 [![Build Status](https://circleci.com/gh/ldbc/ldbc_snb_datagen_hadoop.svg?style=svg)](https://circleci.com/gh/ldbc/ldbc_snb_datagen_hadoop)
 
-Datagen is part of the [LDBC project](http://www.ldbcouncil.org/).
+Datagen is part of the [LDBC project](https://ldbcouncil.org/).
 
 :scroll: If you wish to cite the LDBC SNB, please refer to the [documentation repository](https://github.com/ldbc/ldbc_snb_docs#how-to-cite-ldbc-benchmarks).
 
