@@ -27,7 +27,7 @@ The LDBC SNB Data Generator (Datagen) is the responsible for providing the datas
 
 ### Setup
 
-This version of Datagen (v0.3.5) uses Hadoop to allow execution over multiple machines. Hadoop version 3.2.1 is recommended. (Datagen v0.4.0 and subsequent versions use Spark.)
+This version of Datagen (v0.3.5) uses Hadoop to allow execution over multiple machines. Hadoop version 3.2.1 is recommended.
 
 ### Configuration
 
