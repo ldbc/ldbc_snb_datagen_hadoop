@@ -302,15 +302,6 @@ public class LdbcDatagen {
             p = pb.start();
             p.waitFor();
 
-            System.out.println("Generating BI Parameters");
-            pb = new ProcessBuilder(conf.get("ldbc.snb.datagen.parametergenerator.python"), "paramgenerator/generateparamsbi.py", "./", conf
-                    .get("ldbc.snb.datagen.serializer.outputDir") + "/substitution_parameters");
-            pb.directory(new File("./"));
-            File logBi = new File("parameters_bi.log");
-            pb.redirectErrorStream(true);
-            pb.redirectOutput(ProcessBuilder.Redirect.appendTo(logBi));
-            p = pb.start();
-            p.waitFor();
             System.out.println("Finished Parameter Generation");
         }
         return 0;
