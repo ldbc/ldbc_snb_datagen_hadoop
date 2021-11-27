@@ -287,20 +287,26 @@ public class LdbcDatagen {
                 .getBoolean("ldbc.snb.datagen.generator.activity", false)) {
             System.out.println("Running Parameter Generation");
             System.out.println("Generating Interactive Parameters");
-            ProcessBuilder pb = new ProcessBuilder("mkdir", "-p", conf
+            ProcessBuilder pb1 = new ProcessBuilder("mkdir", "-p", conf
                     .get("ldbc.snb.datagen.serializer.outputDir") + "/substitution_parameters");
-            pb.directory(new File("./"));
-            Process p = pb.start();
-            p.waitFor();
+            pb1.directory(new File("./"));
+            Process p1 = pb1.start();
+            int r1 = p1.waitFor();
+            if (r1 != 0) {
+                throw new RuntimeException("Creating parameter directory failed with exit code " + r1);
+            }
 
-            pb = new ProcessBuilder(conf.get("ldbc.snb.datagen.parametergenerator.python"), "paramgenerator/generateparams.py", "./", conf
+            ProcessBuilder pb2 = new ProcessBuilder(conf.get("ldbc.snb.datagen.parametergenerator.python"), "paramgenerator/generateparams.py", "./", conf
                     .get("ldbc.snb.datagen.serializer.outputDir") + "/substitution_parameters");
-            pb.directory(new File("./"));
+            pb2.directory(new File("./"));
             File logInteractive = new File("parameters_interactive.log");
-            pb.redirectErrorStream(true);
-            pb.redirectOutput(ProcessBuilder.Redirect.appendTo(logInteractive));
-            p = pb.start();
-            p.waitFor();
+            pb2.redirectErrorStream(true);
+            pb2.redirectOutput(ProcessBuilder.Redirect.appendTo(logInteractive));
+            Process p2 = pb2.start();
+            int r2 = p2.waitFor();
+            if (r2 != 0) {
+                throw new RuntimeException("Parameter generation failed with exit code " + r2);
+            }
 
             System.out.println("Finished Parameter Generation");
         }
