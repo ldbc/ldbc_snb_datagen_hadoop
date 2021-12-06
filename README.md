@@ -75,12 +75,15 @@ Set the `params.ini` in the repository as for the pseudo-distributed case. The f
 
 The container outputs its results in the `/opt/ldbc_snb_datagen/out/` directory which contains two sub-directories, `social_network/` and `substitution_parameters`. In order to save the results of the generation, a directory must be mounted in the container from the host. The driver requires the results be in the datagen repository directory. To generate the data, run the following command which includes changing the owner (`chown`) of the Docker-mounted volumes.
 
-:warning: This removes the previously generated `social_network` directory:
+:warning: This removes the previously generated `social_network/` directory:
 
 ```bash
 rm -rf social_network/ substitution_parameters && \
-  docker run --rm --mount type=bind,source="$(pwd)/",target="/opt/ldbc_snb_datagen/out" --mount type=bind,source="$(pwd)/params.ini",target="/opt/ldbc_snb_datagen/params.ini" ldbc/datagen; \
-  sudo chown -R $USER:$USER social_network/ substitution_parameters/
+  docker run --rm \
+    --mount type=bind,source="$(pwd)/",target="/opt/ldbc_snb_datagen/out" \
+    --mount type=bind,source="$(pwd)/params.ini",target="/opt/ldbc_snb_datagen/params.ini" \
+    ldbc/datagen && \
+  sudo chown -R ${USER}:${USER} social_network/ substitution_parameters/
 ```
 
 If you need to raise the memory limit, use the `-e HADOOP_CLIENT_OPTS="-Xmx..."` parameter to override the default value. For SF1, `-Xmx2G` is recommended. For SF1000, `-Xmx370G` is sufficient.
