@@ -17,5 +17,5 @@ RUN mvn dependency:resolve
 # Build jar bundle
 RUN mvn -DskipTests clean assembly:assembly
 
-ENV HADOOP_CLIENT_OPTS '-Xmx8G'
+ENV HADOOP_CLIENT_OPTS '-Xmx6G'
 CMD /opt/ldbc_snb_datagen/docker_run.sh
