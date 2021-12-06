@@ -78,7 +78,7 @@ The container outputs its results in the `/opt/ldbc_snb_datagen/out/` directory 
 :warning: This removes the previously generated `social_network/` directory:
 
 ```bash
-rm -rf social_network/ substitution_parameters && \
+rm -rf social_network/ substitution_parameters/ && \
   docker run --rm \
     --mount type=bind,source="$(pwd)/",target="/opt/ldbc_snb_datagen/out" \
     --mount type=bind,source="$(pwd)/params.ini",target="/opt/ldbc_snb_datagen/params.ini" \
