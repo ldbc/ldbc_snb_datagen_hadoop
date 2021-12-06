@@ -10,7 +10,6 @@ workflows:
 
 jobs:
   test:
-    resource_class: xlarge
     working_directory: ~/ldbc/ldbc_snb_datagen
     machine:
       image: ubuntu-2004:202008-01
