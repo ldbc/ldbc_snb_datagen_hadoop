@@ -15,6 +15,7 @@ ldbc_socialnet_dbgen.iml
 target/
 .m0factors.txt.crc
 .m0friendList0.csv.crc
+/*Factors.txt
 test_data/
 substitution_parameters/
 *.pyc
