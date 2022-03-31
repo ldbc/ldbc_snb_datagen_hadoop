@@ -6,7 +6,7 @@
 
   <groupId>ldbc.snb.datagen</groupId>
   <artifactId>ldbc_snb_datagen</artifactId>
-  <version>0.3.6-SNAPSHOT</version>
+  <version>0.3.6</version>
   <packaging>jar</packaging>
 
   <properties>
