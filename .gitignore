@@ -17,12 +17,12 @@ target/
 .m0friendList0.csv.crc
 /*Factors.txt
 test_data/
-substitution_parameters/
 *.pyc
 scripts/
 *.iml
 /hadoop/
-/social_network/
+/social_network*/
+/substitution_parameters*/
 *.log
 test_log
 .DS_Store
