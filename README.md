@@ -22,7 +22,7 @@ The LDBC SNB Data Generator (Datagen) is responsible for providing the datasets 
 * **[Compilation and Execution](https://github.com/ldbc/ldbc_snb_datagen_hadoop/wiki/Compilation_Execution)**
 * **[Advanced Configuration](https://github.com/ldbc/ldbc_snb_datagen_hadoop/wiki/Advanced_Configuration)**
 * **[Output](https://github.com/ldbc/ldbc_snb_datagen_hadoop/wiki/Data-Output)**
-* **[Troubleshooting](https://github.com/ldbc/ldbc_snb_datagen_hadoop/wiki/Troubleshooting)**
+* **[Troubleshooting](https://github.com/ldbc/ldbc_snb_datagen_hadoop/wiki/Troubleshooting)** (including the out of disk space in `/tmp` issue)
 
 ## Pre-generated data sets
 
