@@ -8,7 +8,7 @@
 # 1. Configure Hadoop and set $HADOOP_HOME. Hadoop 2.6.0 works for all DATAGEN versions.
 #
 # 2. Make sure Hadoop's temp directory has enough space,
-#    see https://github.com/ldbc/ldbc_snb_datagen/wiki/Troubleshooting#javaioioexception-no-space-left-on-device
+#    see https://github.com/ldbc/ldbc_snb_datagen_hadoop/wiki/Troubleshooting#javaioioexception-no-space-left-on-device
 #
 # 3. Make sure the operating system's temp directory (e.g. /tmp) has enough space
 #
