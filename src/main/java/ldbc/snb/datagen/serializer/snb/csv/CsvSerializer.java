@@ -18,7 +18,7 @@ public interface CsvSerializer extends Serializer<HdfsCsvWriter> {
             writers.put(f, new HdfsCsvWriter(
                     conf.get("ldbc.snb.datagen.serializer.socialNetworkDir") + (dynamic ? "/dynamic/" : "/static/"),
                     f.toString() + "_" + reducerId,
-                    conf.getInt("ldbc.snb.datagen.numPartitions", 1),
+                    conf.getInt("ldbc.snb.datagen.serializer.numPartitions", 1),
                     conf.getBoolean("ldbc.snb.datagen.serializer.compressed", false), "|",
                     conf.getBoolean("ldbc.snb.datagen.serializer.endlineSeparator", false)
                 )

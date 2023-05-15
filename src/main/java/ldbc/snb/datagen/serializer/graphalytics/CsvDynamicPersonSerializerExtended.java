@@ -89,7 +89,7 @@ public class CsvDynamicPersonSerializerExtended extends DynamicPersonSerializer<
         writers = new HdfsCsvWriter[numFiles];
         for (int i = 0; i < numFiles; ++i) {
             writers[i] = new HdfsCsvWriter(conf.get("ldbc.snb.datagen.serializer.socialNetworkDir"), FileNames
-                    .values()[i].toString() + "_" + reducerId, conf.getInt("ldbc.snb.datagen.numPartitions", 1), conf
+                    .values()[i].toString() + "_" + reducerId, conf.getInt("ldbc.snb.datagen.serializer.numPartitions", 1), conf
                                                    .getBoolean("ldbc.snb.datagen.serializer.compressed", false), "|", conf
                                                    .getBoolean("ldbc.snb.datagen.serializer.endlineSeparator", false));
         }

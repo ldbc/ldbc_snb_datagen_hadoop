@@ -18,7 +18,7 @@ public interface TurtleSerializer extends Serializer<HdfsWriter> {
 
         for (FileName f : fileNames) {
             HdfsWriter w = new HdfsWriter(conf.get("ldbc.snb.datagen.serializer.socialNetworkDir"),
-                    f.toString() + "_" + reducerId, conf.getInt("ldbc.snb.datagen.numPartitions", 1),
+                    f.toString() + "_" + reducerId, conf.getInt("ldbc.snb.datagen.serializer.numPartitions", 1),
                     conf.getBoolean("ldbc.snb.datagen.serializer.compressed", false), "ttl");
             writers.put(f, w);
 
