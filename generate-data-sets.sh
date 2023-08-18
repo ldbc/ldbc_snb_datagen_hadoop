@@ -55,7 +55,7 @@ for SF in 0.1 0.3 1 3 10 30 100 300 1000; do
             echo ldbc.snb.datagen.serializer.dynamicActivitySerializer:ldbc.snb.datagen.serializer.snb.csv.dynamicserializer.activity.${SERIALIZER}DynamicActivitySerializer >> params.ini
             echo ldbc.snb.datagen.serializer.dynamicPersonSerializer:ldbc.snb.datagen.serializer.snb.csv.dynamicserializer.person.${SERIALIZER}DynamicPersonSerializer >> params.ini
             echo ldbc.snb.datagen.serializer.staticSerializer:ldbc.snb.datagen.serializer.snb.csv.staticserializer.${SERIALIZER}StaticSerializer >> params.ini
-            echo ldbc.snb.datagen.serializer.dateFormatter:ldbc.snb.datagen.util.formatter.${DATEFORMATTER}
+            echo ldbc.snb.datagen.serializer.dateFormatter:ldbc.snb.datagen.util.formatter.${DATEFORMATTER} >> params.ini
             echo ldbc.snb.datagen.serializer.numUpdatePartitions:${NUM_UPDATE_PARTITIONS} >> params.ini
             echo ldbc.snb.datagen.parametergenerator.parameters:false >> params.ini
 
