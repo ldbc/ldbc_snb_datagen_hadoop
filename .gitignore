@@ -11,6 +11,9 @@
 .idea
 ldbc_socialnet_dbgen.iml
 
+# Eclipse
+.project
+
 # other stuff
 target/
 .m0factors.txt.crc
