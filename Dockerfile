@@ -5,6 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Download Hadoop
 WORKDIR /opt
 RUN apt-get update
+RUN apt-get install -y ca-certificates-java
 RUN apt-get install -y bash curl maven python
 RUN curl -L 'https://archive.apache.org/dist/hadoop/core/hadoop-3.3.6/hadoop-3.3.6.tar.gz' | tar -xz
 
