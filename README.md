@@ -40,7 +40,7 @@ The data sets are available at the [SURF/CWI data repository](https://hdl.handle
 
 ### Setup
 
-This version of Datagen uses Hadoop to allow execution over multiple machines. Hadoop version 3.2.1+ is recommended.
+This version of Datagen uses Hadoop to allow execution over multiple machines. Hadoop version 3.3.6+ is recommended.
 
 ### Configuration
 
@@ -63,11 +63,11 @@ To grab Hadoop, extract it, and set the environment values to sensible defaults,
 
 ```bash
 cp params-csv-basic.ini params.ini
-wget https://archive.apache.org/dist/hadoop/core/hadoop-3.2.1/hadoop-3.2.1.tar.gz
-tar xf hadoop-3.2.1.tar.gz
+wget https://archive.apache.org/dist/hadoop/core/hadoop-3.3.6/hadoop-3.3.6.tar.gz
+tar xf hadoop-3.3.6.tar.gz
 export HADOOP_CLIENT_OPTS="-Xmx2G"
-# set this to the Hadoop 3.2.1 directory
-export HADOOP_HOME=`pwd`/hadoop-3.2.1
+# set this to the Hadoop 3.3.6 directory
+export HADOOP_HOME=`pwd`/hadoop-3.3.6
 ./run.sh
 ```
 
