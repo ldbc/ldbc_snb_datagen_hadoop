@@ -11,8 +11,6 @@ import argparse
 import sys
 from math import ceil
 
-import argparse
-
 
 class KeyValue(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
@@ -37,15 +35,6 @@ def ask_continue(message):
         else:
             inp = input("Please answer Y/N: ").lower()
     return resp
-
-
-def split_passthrough_args():
-    args = sys.argv[1:]
-    try:
-        sep = args.index('--')
-        return args[:sep], args[sep+1:]
-    except ValueError:
-        return args, []
 
 
 min_num_workers = 1
@@ -94,8 +83,6 @@ def get_instance_info(instance_type):
 
 def submit_datagen_job(name,
                        sf,
-                       format,
-                       mode,
                        bucket,
                        jar,
                        use_spot,
@@ -110,19 +97,10 @@ def submit_datagen_job(name,
                        yes,
                        ec2_key,
                        conf,
-                       copy_filter,
-                       copy_all,
                        passthrough_args, **kwargs
                        ):
 
     is_interactive = (not yes) and hasattr(__main__, '__file__')
-
-    build_dir = '/ldbc_snb_datagen/build'
-
-    if not copy_filter:
-        copy_filter = f'.*{build_dir}/graphs/{format}/{mode}/.*'
-    else:
-        copy_filter = f'.*{build_dir}/{copy_filter}'
 
     emr = boto3.client('emr')
 
@@ -205,12 +183,10 @@ def submit_datagen_job(name,
                 'HadoopJarStep': {
                     'Properties': [],
                     'Jar': 'command-runner.jar',
-                    'Args': ['spark-submit', '--class', lib.main_class, jar_url,
+                    'Args': ['spark-submit', '--class', 'ldbc.snb.datagen.LdbcDatagen', jar_url,
                              '--output-dir', build_dir,
                              '--scale-factor', str(sf),
                              '--num-threads', str(partitions),
-                             '--mode', mode,
-                             '--format', format,
                              *passthrough_args
                              ]
                 }
@@ -241,23 +217,11 @@ def submit_datagen_job(name,
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Submit a Hadoop Datagen job to EMR')
-    parser.add_argument('name',
+    parser.add_argument('--name',
                         type=str,
                         help='name')
-    parser.add_argument('sf', type=int,
+    parser.add_argument('--scale-factor', type=int,
                         help='scale factor (used to calculate cluster size)')
-    parser.add_argument('format', type=str, help='the required output format')
-    parser.add_argument('mode', type=str, help='output mode')
-    market_args = parser.add_mutually_exclusive_group()
-    market_args.add_argument('--use-spot',
-                             default=defaults['use_spot'],
-                             action='store_true',
-                             help='Use SPOT workers')
-    market_args.add_argument('--no-use-spot',
-                             default=not defaults['use_spot'],
-                             dest='use_spot',
-                             action='store_false',
-                             help='Do not use SPOT workers')
     parser.add_argument('--az',
                         default=defaults['az'],
                         help=f'Cluster availability zone. Default: {defaults["az"]}')
@@ -280,46 +244,31 @@ if __name__ == "__main__":
                         default=defaults['yes'],
                         action='store_true',
                         help='Assume \'yes\' for prompts')
-    copy_args = parser.add_mutually_exclusive_group()
-    copy_args.add_argument('--copy-filter',
-                           type=str,
-                           help='A regular expression specifying filtering paths to copy from the build dir to S3. '
-                                'By default it is \'graphs/{format}/{mode}/.*\'')
-    copy_args.add_argument('--copy-all',
-                           action='store_true',
-                           help='Copy the complete build dir to S3')
-    parser.add_argument("--conf",
-                            metavar="KEY=VALUE",
-                            nargs='+',
-                            action=KeyValue,
-                            help="SparkConf as key=value pairs")
-    executor_args=parser.add_mutually_exclusive_group()
-    executor_args.add_argument("--executors",
-                               type=int,
-                               help=f"Total number of Spark executors."
-                               )
-    executor_args.add_argument("--sf-per-executor",
-                               type=float,
-                               default=defaults['sf_per_executor'],
-                               help=f"Number of scale factors per Spark executor. Default: {defaults['sf_per_executor']}"
-                               )
-    partitioning_args = parser.add_mutually_exclusive_group()
-    partitioning_args.add_argument("--partitions",
-                                   type=int,
-                                   help=f"Total number of Spark partitions to use when generating the dataset."
-                                   )
-    partitioning_args.add_argument("--sf-per-partition",
-                                   type=float,
-                                   default=defaults['sf_per_partition'],
-                                   help=f"Number of scale factors per Spark partitions. Default: {defaults['sf_per_partition']}"
-                                   )
+    # copy_args = parser.add_mutually_exclusive_group()
+    # executor_args=parser.add_mutually_exclusive_group()
+    # executor_args.add_argument("--executors",
+    #                            type=int,
+    #                            help=f"Total number of Spark executors."
+    #                            )
+    # executor_args.add_argument("--sf-per-executor",
+    #                            type=float,
+    #                            default=defaults['sf_per_executor'],
+    #                            help=f"Number of scale factors per Spark executor. Default: {defaults['sf_per_executor']}"
+    #                            )
+    # partitioning_args = parser.add_mutually_exclusive_group()
+    # partitioning_args.add_argument("--partitions",
+    #                                type=int,
+    #                                help=f"Total number of Spark partitions to use when generating the dataset."
+    #                                )
+    # partitioning_args.add_argument("--sf-per-partition",
+    #                                type=float,
+    #                                default=defaults['sf_per_partition'],
+    #                                help=f"Number of scale factors per Spark partitions. Default: {defaults['sf_per_partition']}"
+    #                                )
 
-    parser.add_argument('--', nargs='*', help='Arguments passed to LDBC SNB Datagen', dest="arg")
+    print("parse args")
+    args = parser.parse_args()
+    print("/parse args")
 
-    self_args, passthrough_args = split_passthrough_args()
-
-    args = parser.parse_args(self_args)
-
-    submit_datagen_job(passthrough_args=passthrough_args,
-                       master_instance_type=defaults['master_instance_type'],
+    submit_datagen_job(master_instance_type=defaults['master_instance_type'],
                        **args.__dict__)
