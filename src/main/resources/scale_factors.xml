@@ -174,7 +174,7 @@
     <scale_factor name="snb.interactive.3000">
         <property>
             <name>ldbc.snb.datagen.generator.numPersons</name>
-            <value>9200000</value>
+            <value>9250000</value>
         </property>
         <property>
             <name>ldbc.snb.datagen.generator.startYear</name>
