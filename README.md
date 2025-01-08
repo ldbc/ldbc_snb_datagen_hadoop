@@ -100,7 +100,16 @@ rm -rf social_network/ substitution_parameters/ && \
   sudo chown -R ${USER}:${USER} social_network/ substitution_parameters/
 ```
 
-If you need to raise the memory limit, use the `-e HADOOP_CLIENT_OPTS="-Xmx..."` parameter to override the default value. For SF1, `-Xmx2G` is recommended. For SF1000, use `-Xmx370G` and for SF3000, use `-Xmx850G`.
+If you need to raise the memory limit, use the `-e HADOOP_CLIENT_OPTS="-Xmx..."` parameter to override the default value.
+For SF1, `-Xmx2G` is recommended.
+For SF1000, use `-Xmx370G`.
+For SF3000, use `-Xmx850G`.
+
+#### Parameter generator
+
+The parameter generator requires Python 2, which you can install using [pyenv](https://github.com/pyenv/pyenv).
+
+Note that the parameter generator may require more memory than the data generator. For example, for the SF3000 data set, the parameter generator uses about 930 GB RAM.
 
 ### Hadoop cluster
 
